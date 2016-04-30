@@ -3,8 +3,6 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: [
-		"webpack-dev-server/client?http://localhost:8080/",
-		"webpack/hot/dev-server",
 		'./src/index.js'
 	],
 	output: {
@@ -21,17 +19,6 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
-	],
-	devServer: {
-		contentBase: 'build/',
-		inline: true,
-		hot: true,
-		historyApiFallback: true,
-		compress: true,
-		quiet: false,
-		noInfo: false,
-		lazy: true,
-		filename: 'bundle.js'
-	}
+		// new webpack.HotModuleReplacementPlugin()
+	]
 }

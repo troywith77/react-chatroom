@@ -1,10 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Root from './containers/Root'
+import { Provider } from 'react-redux'
+import store from './store/index'
+import Root from './containers/Root';
 
 const rootEl = document.querySelector('#root');
 
 render(
-	<Root />,
+	<Provider store={store}>
+		<Root />
+	</Provider>
+	,
 	rootEl
 )

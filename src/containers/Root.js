@@ -1,24 +1,57 @@
 import React, { Component } from 'react'
+import * as Actions from '../actions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-// import Wilddog from 'wilddog'
-
-var ref = new Wilddog("https://wild-sheep-53630.wilddogio.com/");
+import SubmitForm from '../components/submit-form'
 
 class Root extends Component {
-	componentDidMount() {
-		console.log('done')
-		ref.child("owner").on("value", function(datasnapshot) {
-		  console.log(datasnapshot.val());   // 结果会在 console 中打印出 "beijing"
-		});
-		ref.set({
-			"owner": "唐锐"
-		})
+	constructor(props) {
+		super(props)
 	}
+
+	componentDidMount() {
+		const { actions } = this.props
+		// actions.INIT_OWNER(prompt('what\'s your name?'))
+		actions.GET_CHATS()
+	}
+
 	render() {
+		const { actions, owner, chats } = this.props
+		let arr = []
+		for(var i in chats) {
+			arr.push(chats[i])
+		}
 		return (
-			<h1>Hello World</h1>
+			<div>
+				<SubmitForm
+					owner={owner}
+					{...actions}
+				/>
+				{
+					arr.map(( chat, index ) => {
+						return <li key={index}>{chat.text}</li>
+					})
+				}
+			</div>
 		)
 	}
 }
 
-export default Root
+const mapStateToProps = ( state ) => {
+	return {
+		owner: state.owner,
+		chats: state.chats
+	}
+}
+
+const mapDispatchToProps = ( dispatch ) => {
+	return {
+		actions: bindActionCreators(Actions, dispatch)
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Root)
