@@ -13,8 +13,17 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
+				include: /src/,
 				loader: 'react-hot!babel?presets[]=react,presets[]=es2015'
+			},
+			{
+				test: /\.css$/,
+				include: /src/,
+				loaders: [
+			      'style-loader',
+			      'css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]',
+			      'postcss-loader'
+			    ]
 			}
 		]
 	},

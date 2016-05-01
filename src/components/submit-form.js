@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
+import TextField from 'material-ui/lib/text-field'
+
 export default class SubmitForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			input: ''
 		}
-		this.handleChange = this.handleChange.bind(this)
-		this.handleClick = this.handleClick.bind(this)
 	}
 
 	handleChange(e) {
@@ -16,28 +16,25 @@ export default class SubmitForm extends Component {
 		})
 	}
 
-	handleClick(input, owner) {
-		const { EMIT_MSG } = this.props
-		EMIT_MSG(input, owner)
+	handleSubmit(e) {
+		const { EMIT_MSG, owner } = this.props
+
+		e.preventDefault()
+		EMIT_MSG(this.state.input, owner)
 		this.setState({
 			input: ''
 		})
 	}
 
 	render() {
-		const { owner } = this.props
 		return (
-			<form onSubmit={e => e.preventDefault()}>
-				<input
-					type='text'
-					value={this.state.input}
-					onChange={this.handleChange}
-				/>
-				<button
-					onClick={this.handleClick.bind(null, this.state.input, owner)}
-				>
-					send
-				</button>
+			<form onSubmit={this.handleSubmit.bind(this)}>
+				<TextField
+			      hintText="Hint Text"
+				  value={this.state.input}
+			      onChange={this.handleChange}
+			      style={{width: '100%'}}
+			    />
 			</form>
 		)
 	}

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import SubmitForm from '../components/submit-form'
+import AppBar from 'material-ui/lib/app-bar'
 
 class Root extends Component {
 	constructor(props) {
@@ -12,7 +13,7 @@ class Root extends Component {
 
 	componentDidMount() {
 		const { actions } = this.props
-		// actions.INIT_OWNER(prompt('what\'s your name?'))
+		actions.INIT_OWNER(prompt('what\'s your name?'))
 		actions.GET_CHATS()
 	}
 
@@ -24,13 +25,25 @@ class Root extends Component {
 		}
 		return (
 			<div>
+				<AppBar
+				    title="Chat Room"
+				    showMenuIconButton={false}
+				    iconElementLeft={null}
+    				iconElementRight={null}
+				/>
 				<SubmitForm
 					owner={owner}
 					{...actions}
 				/>
 				{
 					arr.map(( chat, index ) => {
-						return <li key={index}>{chat.text}</li>
+						return (
+							<li key={index}>
+								{chat.text}
+								<br />
+								{chat.belongTo}
+							</li>
+						)
 					})
 				}
 			</div>
