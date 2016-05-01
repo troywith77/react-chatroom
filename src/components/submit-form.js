@@ -30,7 +30,7 @@ export default class SubmitForm extends Component {
 		return (
 			<form onSubmit={this.handleSubmit.bind(this)}>
 				<TextField
-			      hintText="Hint Text"
+			      hintText="What do you wanna say?"
 				  value={this.state.input}
 			      onChange={this.handleChange}
 			      style={{width: '100%'}}
