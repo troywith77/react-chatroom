@@ -7,10 +7,18 @@ export const chats = ( state = [], action) => {
 	}
 }
 
-export const owner = ( state = '', action ) => {
+const initialOwner = {
+	'contained': false,
+	name: null
+}
+export const owner = ( state = initialOwner, action ) => {
 	switch(action.type) {
 		case 'INIT_OWNER':
-			return action.name;
+			return Object.assign({},
+				{
+					'contained': true,
+					name: action.name
+				});
 		default:
 			return state;
 	}

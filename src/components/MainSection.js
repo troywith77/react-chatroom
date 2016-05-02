@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import SubmitForm from './submit-form'
 import ChatList from './chat-list'
+import UserNameDialog from './dialog-username'
 
 class MainSection extends Component {
 	constructor(props) {
@@ -31,6 +32,12 @@ class MainSection extends Component {
 					owner={owner}
 					{...actions}
 				/>
+
+				<UserNameDialog
+					owner={owner}
+					{...actions}
+				/>
+
 			</div>
 		)
 	}

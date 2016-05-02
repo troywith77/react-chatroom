@@ -15,8 +15,6 @@ for(var i in Colors) {
 	colors.push(i)
 }
 
-console.log(Math.floor(Math.random() * colors.length), colors)
-
 const ChatList = ({
 	chats
 }) => {
@@ -32,13 +30,14 @@ const ChatList = ({
 				<ListItem
 		          leftAvatar={
 		          	<Avatar
-		          		color={Colors[colors[Math.floor(Math.random() * colors.length)]]}
-          				backgroundColor={Colors[colors[Math.floor(Math.random() * colors.length)]]}
-		          	>{chat.belongTo.substr(0,1)}</Avatar>
+		          		/*color={Colors[colors[Math.floor(Math.random() * colors.length)]]}
+          				backgroundColor={Colors[colors[Math.floor(Math.random() * colors.length)]]}*/
+		          	>
+		          		{chat.belongTo.substr(0,1)}
+		          	</Avatar>
 		          }
 		          primaryText={chat.belongTo}
 		          secondaryText={chat.text}
-		          secondaryTextLines={2}
 		        />
 		        <Divider inset={true} />
 			</li>

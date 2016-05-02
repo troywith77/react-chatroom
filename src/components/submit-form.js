@@ -24,7 +24,7 @@ export default class SubmitForm extends Component {
 		const { EMIT_MSG, owner } = this.props
 
 		e.preventDefault()
-		EMIT_MSG(this.state.input, owner)
+		EMIT_MSG(this.state.input, owner.name)
 		this.setState({
 			input: ''
 		})
