@@ -13,7 +13,7 @@ class MainSection extends Component {
 
 	componentDidMount() {
 		const { actions } = this.props
-		actions.INIT_OWNER(prompt('what\'s your name?'))
+		// actions.INIT_OWNER(prompt('what\'s your name?'))
 		actions.GET_CHATS()
 	}
 

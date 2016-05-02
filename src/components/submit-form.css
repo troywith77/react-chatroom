@@ -1,0 +1,9 @@
+.root {
+	display: flex;
+	justify-content: center;
+}
+
+.input {
+	margin-top: 50px;
+	width: 90% !important;
+}

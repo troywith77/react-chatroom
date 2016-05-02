@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Styles from './submit-form.css'
+
 import TextField from 'material-ui/lib/text-field'
 
 export default class SubmitForm extends Component {
@@ -30,12 +32,14 @@ export default class SubmitForm extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit.bind(this)}>
+			<form
+			onSubmit={this.handleSubmit.bind(this)}
+			className={Styles.root}>
 				<TextField
 			      hintText="What do you wanna say?"
 				  value={this.state.input}
 			      onChange={this.handleChange}
-			      style={{width: '100%'}}
+			      className={Styles.input}
 			    />
 			</form>
 		)

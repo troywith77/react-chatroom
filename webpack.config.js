@@ -27,6 +27,9 @@ module.exports = {
 			}
 		]
 	},
+	resolve: {
+		extension: ['js', 'css']
+	}
 	plugins: [
 		// new webpack.HotModuleReplacementPlugin()
 	]
