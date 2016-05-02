@@ -8,6 +8,8 @@ export default class SubmitForm extends Component {
 		this.state = {
 			input: ''
 		}
+		this.handleChange = this.handleChange.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
 	handleChange(e) {
