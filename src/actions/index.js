@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 const ref = new Wilddog("https://wild-sheep-53630.wilddogio.com/");
 
 export const EMIT_MSG = ( message, belongTo ) => {
@@ -5,7 +7,8 @@ export const EMIT_MSG = ( message, belongTo ) => {
 		const chats = ref.child('chats')
 		chats.push({
 			belongTo: belongTo,
-			text: message
+			text: message,
+			date: moment(new Date()).format('YYYY-MM-DD HH:MM:SS')
 		})
 	}
 }

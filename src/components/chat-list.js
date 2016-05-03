@@ -56,7 +56,16 @@ class ChatList extends React.Component {
 			          		{chat.belongTo.substr(0,1)}
 			          	</Avatar>
 			          }
-			          primaryText={chat.belongTo}
+			          primaryText={
+			          	<p>
+			          		{chat.belongTo}
+			          		<span
+			          			style={{fontSize: '80%', float: 'right', color: '#777'}}
+			          		>
+			          			{chat.date}
+			          		</span>
+			          	</p>
+			          }
 			          secondaryText={chat.text}
 			        />
 			        <Divider inset={true} />
