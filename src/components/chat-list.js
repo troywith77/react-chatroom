@@ -15,6 +15,13 @@ for(var i in Colors) {
 	colors.push(i)
 }
 
+const styles = {
+	maxWidth: '700px',
+	margin: '0 auto',
+	maxHeight: 'calc(100vh - 112px)',
+	overflowY: 'scroll'
+}
+
 const ChatList = ({
 	chats
 }) => {
@@ -45,7 +52,7 @@ const ChatList = ({
 	})
 
 	return (
-		<ul>
+		<ul style={styles}>
 			{chatslist}
 		</ul>
 	)

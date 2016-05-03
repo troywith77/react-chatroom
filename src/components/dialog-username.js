@@ -4,12 +4,12 @@ import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 
-export default class UserNameDialog extends Component {
+class UserNameDialog extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 	      input: ''
-	    };
+	    }
 	}
 
  	handleChange(e) {
@@ -25,22 +25,13 @@ export default class UserNameDialog extends Component {
  	}
 
  	handleClose() {
- 		console.log(12312)
  		this.props.INIT_OWNER(this.state.input)
  	}
 
 	render() {
-	    return (
+		return (
         	<Dialog
-	        	title="Tell Us Your name"
-	        	actions={
-	        		<FlatButton
-        				label="Submit"
-        				primary={true}
-        				onTouchTap={this.handleClose.bind(this)}
-        			/>
-        		}
-	        	modal={true}
+	        	title="Tell Us Your Name"
 	        	open={!this.props.owner.contained}
         	>
         		<TextField
@@ -48,9 +39,12 @@ export default class UserNameDialog extends Component {
 				  	value={this.state.input}
 			      	onChange={this.handleChange.bind(this)}
 			      	onKeyUp={this.handleKeyup.bind(this)}
+			      	style={{width: '100%'}}
+			      	autoFocus
 			    />
         	</Dialog>
 	    );
 	}
-
 }
+
+export default UserNameDialog

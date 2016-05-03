@@ -14,7 +14,6 @@ class MainSection extends Component {
 
 	componentDidMount() {
 		const { actions } = this.props
-		// actions.INIT_OWNER(prompt('what\'s your name?'))
 		actions.GET_CHATS()
 	}
 
@@ -22,7 +21,7 @@ class MainSection extends Component {
 		const { actions, owner, chats } = this.props
 
 		return (
-			<div>
+			<div style={{maxWidth: '700px',margin: '0 auto'}}>
 
 				<ChatList
 					chats={chats}

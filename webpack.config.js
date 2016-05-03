@@ -28,8 +28,8 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extension: ['js', 'css']
-	}
+		extensions: ['.js', '.css', '']
+	},
 	plugins: [
 		// new webpack.HotModuleReplacementPlugin()
 	]
