@@ -39,8 +39,8 @@ class UserNameDialog extends Component {
 				  	value={this.state.input}
 			      	onChange={this.handleChange.bind(this)}
 			      	onKeyUp={this.handleKeyup.bind(this)}
-			      	style={{width: '100%'}}
 			      	autoFocus
+			      	fullWidth
 			    />
         	</Dialog>
 	    );

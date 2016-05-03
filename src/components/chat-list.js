@@ -18,44 +18,61 @@ for(var i in Colors) {
 const styles = {
 	maxWidth: '700px',
 	margin: '0 auto',
-	maxHeight: 'calc(100vh - 112px)',
+	maxHeight: 'calc(100vh - 112px - 50px)',
 	overflowY: 'scroll'
 }
 
-const ChatList = ({
-	chats
-}) => {
-	let arr = []
-	for(var i in chats) {
-		arr.push(chats[i])
+class ChatList extends React.Component {
+	scrollToBottom() {
+		const list = this.refs.list
+		list.scrollTop = list.scrollHeight + 1000
 	}
 
+	render() {
+		const { chats } = this.props
 
-	let chatslist = arr.map(( chat, index ) => {
+		if(Object.getOwnPropertyNames(chats).length > 1) {
+			setTimeout(() => {
+				this.scrollToBottom()
+			}, 100)
+		}
+
+
+		let arr = []
+		for(var i in chats) {
+			arr.push(chats[i])
+		}
+
+
+		let chatslist = arr.map(( chat, index ) => {
+			return (
+				<li key={index}>
+					<ListItem
+			          leftAvatar={
+			          	<Avatar
+			          		/*color={Colors[colors[Math.floor(Math.random() * colors.length)]]}
+	          				backgroundColor={Colors[colors[Math.floor(Math.random() * colors.length)]]}*/
+			          	>
+			          		{chat.belongTo.substr(0,1)}
+			          	</Avatar>
+			          }
+			          primaryText={chat.belongTo}
+			          secondaryText={chat.text}
+			        />
+			        <Divider inset={true} />
+				</li>
+			)
+		})
+
 		return (
-			<li key={index}>
-				<ListItem
-		          leftAvatar={
-		          	<Avatar
-		          		/*color={Colors[colors[Math.floor(Math.random() * colors.length)]]}
-          				backgroundColor={Colors[colors[Math.floor(Math.random() * colors.length)]]}*/
-		          	>
-		          		{chat.belongTo.substr(0,1)}
-		          	</Avatar>
-		          }
-		          primaryText={chat.belongTo}
-		          secondaryText={chat.text}
-		        />
-		        <Divider inset={true} />
-			</li>
+			<ul
+			id='ul'
+			style={styles}
+			ref='list'>
+				{chatslist}
+			</ul>
 		)
-	})
-
-	return (
-		<ul style={styles}>
-			{chatslist}
-		</ul>
-	)
+	}
 }
 
 export default ChatList

@@ -39,7 +39,7 @@ export default class SubmitForm extends Component {
 			      hintText="What do you wanna say?"
 				  value={this.state.input}
 			      onChange={this.handleChange}
-			      className={Styles.input}
+			      fullWidth
 			    />
 			</form>
 		)

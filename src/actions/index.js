@@ -31,3 +31,7 @@ export const INIT_OWNER = (name) => {
 		name
 	}
 }
+
+export const SCROLL_TO_BOTTOM = (node) => {
+	node.scrollTop = node.scrollHeight
+}
